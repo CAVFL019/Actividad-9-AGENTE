@@ -38,3 +38,34 @@ SELECT ?control WHERE {
 ```bash
 python agente_python.py
 ```
+## Componentes del Agente
+
+### 1. Ontología (OWL/RDF)
+- Define las clases: Amenaza, Control, Activo
+- Define las relaciones: mitiga, afecta
+- Contiene los individuos: Phishing, Malware, Firewall, AutenticacionDobleFactor, etc.
+- Sirve como base de conocimiento estructurado
+
+### 2. Motor de razonamiento (rdflib + SPARQL)
+- Carga la ontología en un grafo RDF
+- Ejecuta consultas SPARQL para inferir relaciones
+- Permite extender reglas y consultas más complejas
+
+### 3. Agente (clase en Python)
+- **Percepción**: Detecta una amenaza (entrada del usuario o sistema)
+- **Razonamiento**: Consulta la ontología para encontrar controles asociados
+- **Acción**: Recomienda controles o clasifica el riesgo
+
+Métodos principales:
+- `recomendar(amenaza)` → devuelve controles que mitigan la amenaza
+- `evaluar_riesgo(amenaza)` → clasifica la amenaza según número de controles disponibles
+
+### 4. Interfaz de interacción
+- Script en consola que permite introducir amenazas
+- Recibe recomendaciones de controles de seguridad
+- Puede extenderse a API REST o chatbot
+
+### 5. Repositorio (GitHub)
+- Contiene la ontología `ontologia.owl`
+- Incluye ejemplos de consultas SPARQL y código del agente
+- Facilita colaboración y control de versiones
