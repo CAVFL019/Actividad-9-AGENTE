@@ -40,3 +40,15 @@ SELECT ?activo WHERE {
     ?activo rdf:type <http://www.CAVFL019.org/ciberseguridad#Activo> .
 }
 ```
+## Consulta 6: Activos afectados por una amenaza
+
+SELECT ?activo WHERE {
+    <http://www.CAVFL019.org/ciberseguridad#Phishing_Corporativo>
+    <http://www.CAVFL019.org/ciberseguridad#afecta> ?activo .
+}
+
+## Consulta 7: Listar todas las amenazas registradas
+
+SELECT ?amenaza WHERE {
+    ?amenaza rdf:type <http://www.CAVFL019.org/ciberseguridad#Amenaza> .
+}
